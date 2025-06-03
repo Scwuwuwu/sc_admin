@@ -93,31 +93,51 @@ export default {
   },
   methods: {
     // 添加员工
-    handleAdd(){
+    handleAdd() {
 
     },
     // 条件查询;提交表单后执行的方法
     handleSelect() {
-      console.log('submit!');
+      console.log("条件查询");
+      // 根据员工姓名查询;根据性别查询;姓名和性别查询
+      this.axios.post("http://localhost:9000/emp/queryCondition", {
+        total: this.total,
+        pageNum: this.pageNum,
+        params: {
+          emp_name: this.formInline.emp_name,
+          emp_sex: this.formInline.emp_sex
+        }
+      })
+          .then(res => {
+            console.log(res);
+            this.tableData = res.data.rows;
+            this.total = res.data.total;
+            this.pageNum = res.data.pageNum;
+
+          })
+          .catch(res => {
+
+          })
+
     },
     handleUpdate(row) {
       console.log(row);
     },
-    // 删除操作
+    // 根据id删除员工
     handleDelete(id) {
       console.log(id);
       // 向后端发送请求删除数据
-      this.axios.delete("http://localhost:8081/emp/delete/" + id)
+      this.axios.delete("http://localhost:9000/emp/delete/" + id)
           .then(res => {
             if (res.data.code === 100) {
               this.$message({
                 message: '删除成功',
                 type: 'success'
               });
-              this.pageSize  = res.data.data.pageSize;  // 将当前页赋值给pageSize
+              this.pageSize = res.data.data.pageSize;  // 将当前页赋值给pageSize
               // 刷新页面
               this.queryPage();
-            }else  {
+            } else {
               this.$message.error('删除失败,请稍后重试');
             }
           }).catch(res => {
@@ -137,7 +157,7 @@ export default {
       //
       //     })
       // post请求,携带data传递给后端
-      this.axios.post("http://localhost:8081/emp/queryPage", {pageNum: this.pageNum, pageSize: this.pageSize})
+      this.axios.post("http://localhost:9000/emp/queryPage", {pageNum: this.pageNum, pageSize: this.pageSize})
           .then(res => {
             console.log(res);
             this.tableData = res.data.rows;
