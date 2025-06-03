@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PageParams<T> {
-    private Integer pageNum = 1;
-    private Integer pageSize = 5;
+    private Integer pageNum = 1;    // 默认第一页
+    private Integer pageSize = 5;   // 5条记录
 
     // 查询条件
     private T params;

@@ -13,4 +13,7 @@ public interface EmpService {
     PageResult<Emp> queryPage(PageParams<Emp> params);
 
     void deleteById(Integer id);
+
+    PageResult<Emp> queryCondition(PageParams<Emp> params);
+
 }

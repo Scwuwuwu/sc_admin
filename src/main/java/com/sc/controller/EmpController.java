@@ -5,11 +5,13 @@ import com.sc.common.PageParams;
 import com.sc.common.PageResult;
 import com.sc.pojo.Emp;
 import com.sc.service.EmpService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/emp")
@@ -44,4 +46,12 @@ public class EmpController {
         empService.deleteById(id);
         return new JsonCode(100, "删除成功",null);
     }
+
+    @PostMapping("/queryCondition")
+    public PageResult<Emp> queryByName(@RequestBody PageParams<Emp> params){
+        log.info("查询条件: {}", params);
+        PageResult<Emp> pageList = empService.queryCondition(params);
+        return pageList;
+    }
 }
+

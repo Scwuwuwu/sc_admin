@@ -9,4 +9,6 @@ public interface EmpMapper {
     List<Emp> queryAll(PageParams<Emp> params);
 
     void deleteById(Integer id);
+
+    List<Emp> queryCondition(Emp params);
 }

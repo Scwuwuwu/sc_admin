@@ -6,6 +6,17 @@
     <select id="queryAll" resultType="com.sc.pojo.Emp">
         select * from emp
     </select>
+
+    <select id="queryCondition" resultType="com.sc.pojo.Emp">
+        select * from emp where 1=1
+        <if test="emp_name != null">
+            and emp_name like concat('%',#{emp_name},'%')
+        </if>
+        <if test="emp_sex != null">
+            and emp_sex = #{emp_sex}
+        </if>
+    </select>
+
     <delete id="deleteById">
         delete from emp where emp_id = #{id}
     </delete>

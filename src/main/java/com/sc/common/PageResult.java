@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PageResult<T> {
+
     private Long total = 0L; // 总记录数
     private List<T> rows;  // 当前页数据
 }
