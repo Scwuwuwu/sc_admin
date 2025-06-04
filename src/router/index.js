@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import EmpView from "@/views/EmpView.vue";
+import FormView from "@/views/FormView.vue";
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/emp',
     name: 'emp',
     component: EmpView
+  },
+  {
+    path: '/form',
+    name: 'form',
+    component: FormView
   },
   {
     path: '/about',
