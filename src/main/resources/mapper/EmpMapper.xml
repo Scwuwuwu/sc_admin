@@ -16,8 +16,24 @@
             and emp_sex = #{emp_sex}
         </if>
     </select>
+    <update id="update">
+        update emp
+        set emp_name    = #{emp_name},
+            emp_sex     = #{emp_sex},
+            emp_address = #{emp_address},
+            emp_age     = #{emp_age},
+            emp_salary  = #{emp_salary},
+            emp_birth   = #{emp_birth},
+            dept_id     = #{dept_id}
+        where emp_id = #{emp_id}
+    </update>
 
     <delete id="deleteById">
         delete from emp where emp_id = #{id}
     </delete>
+
+    <insert id="add">
+        insert into emp(emp_name, emp_sex, emp_address, emp_age, emp_salary, emp_birth, dept_id)
+        values (#{emp_name}, #{emp_sex}, #{emp_address}, #{emp_age}, #{emp_salary}, #{emp_birth}, #{dept_id})
+    </insert>
 </mapper>

@@ -16,4 +16,7 @@ public interface EmpService {
 
     PageResult<Emp> queryCondition(PageParams<Emp> params);
 
+    void add(Emp emp);
+
+    void update(Emp emp);
 }

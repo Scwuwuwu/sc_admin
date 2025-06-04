@@ -59,6 +59,20 @@ public class EmpServiceImpl implements EmpService {
         return new PageResult<>(page.getTotal(), empList);
     }
 
+    /**
+     * 添加员工
+     * @param emp
+     */
+    @Override
+    public void add(Emp emp) {
+       empMapper.add(emp);
+    }
+
+    @Override
+    public void update(Emp emp) {
+        empMapper.update(emp);
+    }
+
 
 //    @Override
 //    public List<Emp> queryAll() {

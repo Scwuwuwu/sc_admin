@@ -53,5 +53,28 @@ public class EmpController {
         PageResult<Emp> pageList = empService.queryCondition(params);
         return pageList;
     }
+
+    @PostMapping("/add")
+    public JsonCode add(@RequestBody Emp emp){
+        // Service执行add方法前
+        log.info("添加的参数为：{}", emp);
+        empService.add(emp);
+        return new JsonCode(100, "添加成功",null);
+    }
+
+    /**
+     * 添加 or 更新操作; 区别在于是否传入id
+     * @param emp
+     * @return
+     */
+    @PostMapping("/save")
+    public JsonCode save(@RequestBody Emp emp){
+        log.info("保存的参数为：{}", emp);
+        // 如果id为空，则添加
+        if (emp.getEmp_id() == null) {
+            empService.add(emp);
+        }else empService.update(emp);
+        return new JsonCode(100, "操作成功",null);
+    }
 }
 

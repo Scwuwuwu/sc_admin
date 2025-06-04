@@ -11,4 +11,8 @@ public interface EmpMapper {
     void deleteById(Integer id);
 
     List<Emp> queryCondition(Emp params);
+
+    void add(Emp emp);
+
+    void update(Emp emp);
 }

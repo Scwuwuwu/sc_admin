@@ -6,4 +6,8 @@
     <select id="selectById" resultType="com.sc.pojo.Dept">
         select * from dept where dept_id = #{deptId}
     </select>
+
+    <select id="list" resultType="com.sc.pojo.Dept">
+        select * from dept
+    </select>
 </mapper>

@@ -6,6 +6,8 @@ import com.sc.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeptServiceImpl implements DeptService {
     @Autowired
@@ -14,5 +16,10 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public Dept selectById(Integer deptId) {
         return deptMapper.selectById(deptId);
+    }
+
+    @Override
+    public List<Dept> list() {
+        return deptMapper.list();
     }
 }
